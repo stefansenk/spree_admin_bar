@@ -1,0 +1,26 @@
+/*
+ *= require store/spree_core
+*/
+
+#admin_bar {
+  font-size: 13px;
+  font-family: verdana, sans-serif;
+  background-color: rgba(0,0,0,.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff !important;
+  padding: 2px;
+
+  strong, a {
+    color: #fff !important;
+    font-family: verdana, sans-serif;
+  }
+
+  a:hover {
+    color: #aaa !important;
+    text-decoration: underline;
+  }
+}

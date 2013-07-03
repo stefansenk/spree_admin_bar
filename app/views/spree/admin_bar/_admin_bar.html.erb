@@ -1,0 +1,30 @@
+<% if try_spree_current_user.try(:has_spree_role?, "admin") %>
+  <div id="admin_bar">
+    <strong>Spree <%= link_to 'Admin', admin_path %>: &nbsp;</strong>
+
+    <% if @product %>
+
+      <%= link_to "Edit Product", edit_admin_product_path(@product) %> 
+      | <%= link_to "Images", admin_product_images_path(@product) %>
+      | <%= link_to "Variants", admin_product_variants_path(@product) %>
+      | <%= link_to "Properties", admin_product_product_properties_path(@product) %>
+      <% if defined? Spree::Relation %>
+        | <%= link_to "Related", related_admin_product_path(@product) %>
+      <% end %>
+
+      <% ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
+      | <%= link_to 'Delete Product', admin_product_url(@product, :protocol => (ssl_required ? 'https' : 'http')), :confirm => 'Are you sure?', :method => :delete %>
+
+    <% elsif @taxon %>
+
+      <%= link_to 'Edit Taxonomy', edit_admin_taxonomy_path(@taxon.taxonomy) %>
+      | <%= link_to 'Edit Taxon', edit_admin_taxonomy_taxon_path(@taxon.taxonomy.id, @taxon.id) %>
+
+    <% elsif defined? Spree::Page and @page %>
+
+      <%= link_to 'Edit Page', edit_admin_page_path(@page) %>
+
+    <% end %>
+
+  </div>
+<% end %>
