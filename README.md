@@ -6,14 +6,14 @@ Spree Admin Bar
 Adds an admin bar to a [Spree](http://github.com/spree/spree) E-Commerce platform shop font-end, allowing an admin user to quickly navigate to the relevant sections within the site admin pages.
 
 The admin bar gets displayed at the top of each page to users logged in as an admin. It works with following the entities:
-    - Products    
-    - Taxons/Taxonomies
-    - Pages  ([Spree Static Content](https://github.com/spree/spree_static_content))
-    - Related Products  ([Spree Related Products](https://github.com/spree/spree_related_products))
+    * Products    
+    * Taxons/Taxonomies
+    * Pages  ([Spree Static Content](https://github.com/spree/spree_static_content))
+    * Related Products  ([Spree Related Products](https://github.com/spree/spree_related_products))
 
 Product page screenshot:
 
-![Screenshot](https://raw.github.com/stefansenk/spree_admin_bar/screenshot.png)
+![Screenshot](https://raw.github.com/stefansenk/spree_admin_bar/master/screenshot.png)
 
 
 Background
