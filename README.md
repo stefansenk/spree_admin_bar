@@ -1,7 +1,7 @@
 Spree Admin Bar
 ===============
 
-[![Build Status](https://travis-ci.org/stefansenk/spree_admin_bar.png?branch=1-3-stable)](https://travis-ci.org/stefansenk/spree_admin_bar)
+[![Build Status](https://travis-ci.org/stefansenk/spree_admin_bar.png?branch=2-0-stable)](https://travis-ci.org/stefansenk/spree_admin_bar)
 
 Adds an admin bar to a [Spree](http://github.com/spree/spree) E-Commerce platform shop font-end, allowing an admin user to quickly navigate to the relevant sections within the site admin pages.
 
@@ -27,27 +27,31 @@ Installation
 
 Add to your Gemfile:
 
-    gem 'spree_admin_bar', github: 'stefansenk/spree_admin_bar'
+```ruby
+gem 'spree_admin_bar', github: 'stefansenk/spree_admin_bar'
+```
 
+Bundle your dependencies and run the installation generator:
 
-Run:
+```shell
+bundle
+bundle exec rails g spree_admin_bar:install
+```
 
-    $ bundle install
-    $ rake railties:install:migrations
-    $ rake db:migrate
+If required, include spree_admin_bar.css from your CSS file:
 
-
-Include spree_admin_bar.css from your CSS file:
-
-    *= require store/spree_admin_bar
-
+```
+*= require store/spree_admin_bar
+```
 
 Testing
 -------
 
-    $ bundle
-    $ bundle exec rake test_app
-    $ bundle exec rspec spec
+```shell
+bundle
+bundle exec rake test_app
+bundle exec rspec spec
+```
 
 
 Copyright (c) 2013 Stefan Senk, released under the New BSD License
