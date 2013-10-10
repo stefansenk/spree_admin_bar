@@ -13,7 +13,7 @@
       <% end %>
 
       <% ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
-      | <%= link_to 'Delete Product', admin_product_url(@product, :protocol => (ssl_required ? 'https' : 'http')), :confirm => 'Are you sure?', :method => :delete %>
+      | <%= link_to 'Delete Product', admin_product_url(@product, protocol: (ssl_required ? 'https' : 'http')), data: { confirm: 'Are you sure?'}, method: :delete %>
 
     <% elsif @taxon %>
 
