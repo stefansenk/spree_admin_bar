@@ -19,7 +19,7 @@ require 'database_cleaner'
 require 'ffaker'
 
 # Eager load SpreeRelatedProduct models, so define?(Spree::Relation) behaves correctly.
-SpreeRelatedProducts::Engine.eager_load!
+# SpreeRelatedProducts::Engine.eager_load!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
