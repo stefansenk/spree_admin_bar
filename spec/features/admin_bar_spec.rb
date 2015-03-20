@@ -3,8 +3,8 @@ require 'spec_helper'
 def sign_in_as_admin!
   user = create(:admin_user)
   visit '/login'
-  fill_in 'Email', :with => user.email
-  fill_in 'Password', :with => 'secret'
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: 'secret'
   click_button 'Login'
 end
 
@@ -23,8 +23,8 @@ feature 'homepage admin bar' do
 end
 
 feature 'taxons admin bar' do
-  let!(:taxonomy) { create(:taxonomy, :name => "Category") }
-  let!(:taxon) { taxonomy.root.children.create(:name => "Clothing", :taxonomy_id => taxonomy.id) }
+  let!(:taxonomy) { create(:taxonomy, name: "Category") }
+  let!(:taxon) { taxonomy.root.children.create(name: "Clothing", taxonomy_id: taxonomy.id) }
   context "an admin user" do
     before do
       sign_in_as_admin!
@@ -49,7 +49,7 @@ feature 'taxons admin bar' do
 end
 
 feature 'products admin bar' do
-  let!(:product) { create(:product, :name => "Superman T-Shirt") }
+  let!(:product) { create(:product, name: "Superman T-Shirt") }
   context "an admin user" do
     before do
       sign_in_as_admin!
@@ -90,16 +90,16 @@ feature 'products admin bar' do
   end
 end
 
-feature 'pages admin bar' do
-  let!(:content_page) { Spree::Page.create!(:slug => '/page2', :title => 'TestPage2', :body => 'Body2', :visible => true) }
-  scenario "an admin user can navidate to edit the page in the admin" do
-    sign_in_as_admin!
-    visit '/page2'
-    within('#admin_bar'){ click_link 'Edit Page' }
-    current_path.should == spree.edit_admin_page_path(content_page)
-  end
-  scenario "does not allow a regular user to navigate to the admin" do
-    visit '/page2'
-    page.should_not have_content('Edit Page')
-  end
-end
+# feature 'pages admin bar' do
+#   let!(:content_page) { Spree::Page.create!(slug: '/page2', title: 'TestPage2', body: 'Body2', visible: true) }
+#   scenario "an admin user can navidate to edit the page in the admin" do
+#     sign_in_as_admin!
+#     visit '/page2'
+#     within('#admin_bar'){ click_link 'Edit Page' }
+#     current_path.should == spree.edit_admin_page_path(content_page)
+#   end
+#   scenario "does not allow a regular user to navigate to the admin" do
+#     visit '/page2'
+#     page.should_not have_content('Edit Page')
+#   end
+# end

@@ -8,12 +8,13 @@
       | <%= link_to Spree.t(:images), admin_product_images_path(@product) %>
       | <%= link_to Spree.t(:variants), admin_product_variants_path(@product) %>
       | <%= link_to Spree.t(:properties), admin_product_product_properties_path(@product) %>
-<!--  <%# if defined? Spree::Relation %>
-        | <%#= link_to Spree.t(:related), related_admin_product_path(@product) %>
-      <%# end %> -->
-      <!-- change this -->
-      <!-- <%# ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
-      | <%#= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (ssl_required ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %> -->
+
+      <% if defined? Spree::Relation %>
+        | <%= link_to Spree.t(:related), related_admin_product_path(@product) %>
+      <% end %>
+
+      <% use_ssl = ssl_required and Rails.env.production? %>
+      | <%= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (use_ssl ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
 
     <% elsif @taxon %>
 
