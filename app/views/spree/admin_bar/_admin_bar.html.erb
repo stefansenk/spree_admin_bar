@@ -12,8 +12,8 @@
         | <%#= link_to Spree.t(:related), related_admin_product_path(@product) %>
       <%# end %> -->
       <!-- change this -->
-      <% ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
-      | <%= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (ssl_required ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
+      <!-- <% ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
+      | <%= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (ssl_required ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %> -->
 
     <% elsif @taxon %>
 
