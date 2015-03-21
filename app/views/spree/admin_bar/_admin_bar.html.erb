@@ -13,8 +13,10 @@
         | <%= link_to Spree.t(:related), related_admin_product_path(@product) %>
       <% end %>
 
-      <% use_ssl = ssl_required and Rails.env.production? %>
-      | <%= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (use_ssl ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
+      <%# Removed ssl_required in favor of rails ForceSSL enable config.force_ssl = true within your production.rb %>
+      <%# https://github.com/spree/spree/blob/3d45e72c73aa5af64f608c429aa766658c85f01d/guides/content/release_notes/3_0_0.md#ssl %>
+
+      | <%= link_to Spree.t(:delete_product), admin_product_path(@product), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
 
     <% elsif @taxon %>
 
