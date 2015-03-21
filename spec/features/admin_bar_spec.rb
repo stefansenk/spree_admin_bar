@@ -10,7 +10,7 @@ end
 
 
 feature 'homepage admin bar' do
-  scenario "an admin user can navidate to the admin" do
+  scenario "an admin user can navigate to the admin" do
     sign_in_as_admin!
     visit '/'
     within('#admin_bar'){ click_link 'Admin' }
@@ -90,16 +90,18 @@ feature 'products admin bar' do
   end
 end
 
-# feature 'pages admin bar' do
-#   let!(:content_page) { Spree::Page.create!(slug: '/page2', title: 'TestPage2', body: 'Body2', visible: true) }
-#   scenario "an admin user can navidate to edit the page in the admin" do
-#     sign_in_as_admin!
-#     visit '/page2'
-#     within('#admin_bar'){ click_link 'Edit Page' }
-#     current_path.should == spree.edit_admin_page_path(content_page)
-#   end
-#   scenario "does not allow a regular user to navigate to the admin" do
-#     visit '/page2'
-#     page.should_not have_content('Edit Page')
-#   end
-# end
+feature 'pages admin bar' do
+  let!(:store) { create(:store, default: true) }
+  let!(:content_page) { Spree::Page.create!(slug: '/page2', title: 'TestPage2', body: 'Body2', visible: true, stores: [store]) }
+  scenario "an admin user can navigate to edit the page in the admin" do
+    sign_in_as_admin!
+    visit '/page2'
+    page.should have_content('Edit Page')
+    within('#admin_bar'){ click_link 'Edit Page' }
+    current_path.should == spree.edit_admin_page_path(content_page)
+  end
+  scenario "does not allow a regular user to navigate to the admin" do
+    visit '/page2'
+    page.should_not have_content('Edit Page')
+  end
+end
