@@ -14,7 +14,7 @@ feature 'homepage admin bar' do
     sign_in_as_admin!
     visit '/'
     within('#admin_bar'){ click_link 'Admin' }
-    current_path.should == spree.admin_path
+    current_path.should == spree.admin_orders_path
   end
   scenario "does not allow a regular user to navigate to the admin" do
     visit '/'
