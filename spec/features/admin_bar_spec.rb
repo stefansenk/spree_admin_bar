@@ -78,10 +78,10 @@ feature 'products admin bar' do
       within('#admin_bar'){ click_link 'Delete Product' }
       product.reload.deleted_at.should_not be_nil
     end
-    # scenario "allows an admin user to edit related products in the admin" do
-    #   within('#admin_bar'){ click_link 'Related' }
-    #   current_path.should == spree.related_admin_product_path(product)
-    # end
+    scenario "allows an admin user to edit related products in the admin" do
+      within('#admin_bar'){ click_link 'Related' }
+      current_path.should == spree.related_admin_product_path(product)
+    end
   end
   scenario "does not allow a regular user to navigate to the admin" do
     visit '/'
