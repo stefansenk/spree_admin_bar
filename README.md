@@ -1,15 +1,17 @@
-Spree Admin Bar
+Spree Admin Bar for Spree 3.0.0
 ===============
 
-[![Build Status](https://travis-ci.org/stefansenk/spree_admin_bar.png?branch=master)](https://travis-ci.org/stefansenk/spree_admin_bar)
+[![Build Status](https://travis-ci.org/QuintinAdam/spree_admin_bar.svg)](https://travis-ci.org/QuintinAdam/spree_admin_bar)
+
+Forked from stefansenk.
 
 Adds an admin bar to a [Spree](http://github.com/spree/spree) E-Commerce platform shop front-end, allowing an admin user to quickly navigate to the relevant sections within the site admin pages.
 
 The admin bar gets displayed at the top of each page to users logged in as an admin. It works with following the entities:
 * Products
 * Taxons/Taxonomies
-* Pages  ([Spree Static Content](https://github.com/spree/spree_static_content))
-* Related Products  ([Spree Related Products](https://github.com/spree/spree_related_products))
+* Pages  ([Spree Static Content](https://github.com/spree/spree_static_content)) - not implemented yet in version 3.0.0
+* Related Products  ([Spree Related Products](https://github.com/spree/spree_related_products)) - not implemented yet in version 3.0.0
 
 Product page screenshot:
 
@@ -28,7 +30,7 @@ Installation
 Add to your Gemfile:
 
 ```ruby
-gem 'spree_admin_bar', github: 'stefansenk/spree_admin_bar'
+gem 'spree_admin_bar', github: 'QuintinAdam/spree_admin_bar'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -38,11 +40,10 @@ bundle
 bundle exec rails g spree_admin_bar:install
 ```
 
-If required, include spree_admin_bar.css from your CSS file:
+or just add `*= require spree/frontend/spree_admin_bar`
 
-```
-*= require store/spree_admin_bar
-```
+to `/vendor/assets/stylesheets/spree/frontend/all.css`
+
 
 Testing
 -------
