@@ -2,10 +2,10 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_admin_bar'
-  s.version     = '2.1.0'
+  s.version     = '3.0.0'
   s.summary     = 'Adds an admin bar to a Spree shop front-end.'
   s.description = 'Adds an admin bar to a Spree shop front-end to allow an admin user to quickly navigate to the relevant section in the admin pages.'
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.1.0'
 
   s.author    = 'Stefan Senk'
   # s.email     = 'you@example.com'
@@ -16,7 +16,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.2.0'
+  spree_version = '~> 3.0.0'
+
+  s.add_dependency 'spree_core', spree_version
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner', '~> 1.0.0'

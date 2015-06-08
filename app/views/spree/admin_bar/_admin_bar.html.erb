@@ -1,19 +1,22 @@
-<% if try_spree_current_user.try(:has_spree_role?, "admin") %>
+<% if current_spree_user.try(:admin?) %>
   <div id="admin_bar">
     <strong><%= link_to Spree.t(:admin_path_name), admin_path %>: &nbsp;</strong>
 
     <% if @product %>
 
-      <%= link_to Spree.t(:edit_product), edit_admin_product_path(@product) %> 
+      <%= link_to Spree.t(:edit_product), edit_admin_product_path(@product) %>
       | <%= link_to Spree.t(:images), admin_product_images_path(@product) %>
       | <%= link_to Spree.t(:variants), admin_product_variants_path(@product) %>
       | <%= link_to Spree.t(:properties), admin_product_product_properties_path(@product) %>
+
       <% if defined? Spree::Relation %>
         | <%= link_to Spree.t(:related), related_admin_product_path(@product) %>
       <% end %>
 
-      <% ssl_required = Spree::Config[:allow_ssl_in_production] and Rails.env.production? %>
-      | <%= link_to Spree.t(:delete_product), admin_product_url(@product, protocol: (ssl_required ? 'https' : 'http')), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
+      <%# Removed ssl_required in favor of rails ForceSSL enable config.force_ssl = true within your production.rb %>
+      <%# https://github.com/spree/spree/blob/3d45e72c73aa5af64f608c429aa766658c85f01d/guides/content/release_notes/3_0_0.md#ssl %>
+
+      | <%= link_to Spree.t(:delete_product), admin_product_path(@product), data: { confirm: Spree.t(:are_you_sure)}, method: :delete %>
 
     <% elsif @taxon %>
 
