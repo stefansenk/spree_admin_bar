@@ -1,10 +1,19 @@
+/*
+Placeholder manifest file.
+the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/frontend/all.css'
+*/
 #admin_bar {
   font-size: 13px;
   font-family: verdana, sans-serif;
-  background-color: #1D1D1D;
+  background-color: rgba(0,0,0,.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   color: #fff !important;
-  padding: 2px;
+  padding: 4px;
+  z-index: 10000;
 
   strong, a {
     color: #fff !important;

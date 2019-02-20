@@ -2,7 +2,7 @@ require 'spec_helper'
 
 def sign_in_as_admin!
   user = create(:admin_user)
-  visit '/login'
+  visit spree.login_path
   fill_in 'Email', with: user.email
   fill_in 'Password', with: 'secret'
   click_button 'Login'
@@ -12,12 +12,12 @@ end
 feature 'homepage admin bar' do
   scenario "an admin user can navigate to the admin" do
     sign_in_as_admin!
-    visit '/'
+    visit spree.root_path
     within('#admin_bar'){ click_link 'Admin' }
     current_path.should == spree.admin_orders_path
   end
   scenario "does not allow a regular user to navigate to the admin" do
-    visit '/'
+    visit spree.root_path
     page.should_not have_content('Admin')
   end
 end
@@ -28,7 +28,7 @@ feature 'taxons admin bar' do
   context "an admin user" do
     before do
       sign_in_as_admin!
-      visit '/'
+      visit spree.root_path
       click_link 'Clothing'
     end
     scenario "can navigate to edit the taxonomy in the admin" do
@@ -41,7 +41,7 @@ feature 'taxons admin bar' do
     end
   end
   scenario "does not allow a regular user to navigate to the admin" do
-    visit '/'
+    visit spree.root_path
     click_link 'Clothing'
     page.should_not have_content('Edit Taxonomy')
     page.should_not have_content('Edit Taxon')
@@ -53,7 +53,7 @@ feature 'products admin bar' do
   context "an admin user" do
     before do
       sign_in_as_admin!
-      visit '/'
+      visit spree.root_path
       click_link 'Superman T-Shirt'
     end
     scenario "can navigate to edit the product in the admin" do
@@ -84,16 +84,17 @@ feature 'products admin bar' do
     end
   end
   scenario "does not allow a regular user to navigate to the admin" do
-    visit '/'
+    visit spree.root_path
     click_link 'Superman T-Shirt'
     page.should_not have_content('Edit Product')
   end
 end
 
 feature 'pages admin bar' do
-  let!(:store) { create(:store, default: true) }
-  let!(:content_page) { Spree::Page.create!(slug: '/page2', title: 'TestPage2', body: 'Body2', visible: true, stores: [store]) }
+  # let!(:store) { create(:store, default: true) }
+  # let!(:content_page) { Spree::Page.create!(slug: '/page2', title: 'TestPage2', body: 'Body2', visible: true, stores: [store]) }
   scenario "an admin user can navigate to edit the page in the admin" do
+    pending "TODO Add spree_static_content"
     sign_in_as_admin!
     visit '/page2'
     page.should have_content('Edit Page')
@@ -101,6 +102,7 @@ feature 'pages admin bar' do
     current_path.should == spree.edit_admin_page_path(content_page)
   end
   scenario "does not allow a regular user to navigate to the admin" do
+    pending "TODO Add spree_static_content"
     visit '/page2'
     page.should_not have_content('Edit Page')
   end

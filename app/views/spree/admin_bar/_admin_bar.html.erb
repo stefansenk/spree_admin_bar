@@ -9,7 +9,7 @@
       | <%= link_to Spree.t(:variants), admin_product_variants_path(@product) %>
       | <%= link_to Spree.t(:properties), admin_product_product_properties_path(@product) %>
 
-      <% if defined? Spree::Relation %>
+      <% if @product.respond_to? :relations %>
         | <%= link_to Spree.t(:related), related_admin_product_path(@product) %>
       <% end %>
 
