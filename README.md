@@ -7,8 +7,8 @@ Adds an admin bar to a [Spree](http://github.com/spree/spree) E-Commerce platfor
 The admin bar gets displayed at the top of each page to users logged in as an admin. It works with following the entities:
 * Products
 * Taxons/Taxonomies
-* Pages  ([Spree Static Content](https://github.com/spree-contrib/spree_static_content)) - not implemented yet in version 3.0.0
-* Related Products  ([Spree Related Products](https://github.com/spree-contrib/spree_related_products)) - not implemented yet in version 3.0.0
+* Pages  ([Spree Static Content](https://github.com/spree-contrib/spree_static_content))
+* Related Products  ([Spree Related Products](https://github.com/spree-contrib/spree_related_products))
 
 Product page screenshot:
 
