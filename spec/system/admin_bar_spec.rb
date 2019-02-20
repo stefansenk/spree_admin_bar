@@ -79,6 +79,7 @@ feature 'products admin bar' do
       product.reload.deleted_at.should_not be_nil
     end
     scenario "allows an admin user to edit related products in the admin" do
+      pending "TODO"
       within('#admin_bar'){ click_link 'Related' }
       current_path.should == spree.related_admin_product_path(product)
     end
